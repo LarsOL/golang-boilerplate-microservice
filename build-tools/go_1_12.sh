@@ -138,7 +138,7 @@ publish() {
    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
    commitsha=$(git rev-parse --short HEAD)
    echo "Embedding version: ${version} description: ${description} commit: ${commitsha}"
-   docker build -t larslawoko/example-go-microservice:latest --build-arg META_DESC="${description}" --build-arg META_VERSION="${version}"  --build-arg META_COMMIT_SHA="${commitsha}" .
+   docker build -t larslawoko/example-go-microservice:latest t larslawoko/example-go-microservice:${version} --build-arg META_DESC="${description}" --build-arg META_VERSION="${version}"  --build-arg META_COMMIT_SHA="${commitsha}" .
    docker push larslawoko/example-go-microservice:latest
 }
 
