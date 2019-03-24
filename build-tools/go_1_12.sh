@@ -145,6 +145,7 @@ publish() {
    --build-arg META_VERSION="${version}"  \
    --build-arg META_COMMIT_SHA="${commitsha}" .
    docker push larslawoko/example-go-microservice:latest
+   docker push larslawoko/example-go-microservice:${version}
 }
 
 serve() {
