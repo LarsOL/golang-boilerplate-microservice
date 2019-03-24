@@ -1,4 +1,5 @@
-# Go Microservice Boilerplate
+# Go Microservice Boilerplate 
+[![Build Status](https://travis-ci.com/LarsOL/golang-boilerplate-microservice.svg?branch=master)](https://travis-ci.com/LarsOL/golang-boilerplate-microservice)
 
 This is a example repo setting up a simple golang microservice boilerplate
 
