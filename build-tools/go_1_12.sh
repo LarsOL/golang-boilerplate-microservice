@@ -43,7 +43,7 @@ test() {
 
     echo "Running unit tests..."
 
-    go test -v -covermode=atomic --run=$1 -coverprofile=${coverresults_dir}/cover.out ./... 2>&1 | tee ${unit_test_out}
+    go test -v -covermode=atomic --run=$1 -coverprofile=${coverresults_dir}/cover.out ./status 2>&1 | tee ${unit_test_out}
     local readonly test_exit_code=${PIPESTATUS[0]}
     defer "echo Delete unit test output && rm -v ${unit_test_out}"
 
@@ -136,8 +136,9 @@ sa () {
 
 publish() {
    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-   echo "Embedding version: ${version} description: ${description}"
-   docker build -t larslawoko/example-go-microservice:latest --build-arg META_DESC="${description}" --build-arg META_VERSION="${version}" .
+   commitsha=$(git rev-parse --short HEAD)
+   echo "Embedding version: ${version} description: ${description} commit: ${commitsha}"
+   docker build -t larslawoko/example-go-microservice:latest --build-arg META_DESC="${description}" --build-arg META_VERSION="${version}"  --build-arg META_COMMIT_SHA="${commitsha}" .
    docker push larslawoko/example-go-microservice:latest
 }
 

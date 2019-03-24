@@ -20,11 +20,3 @@ jobs:
     script:
     - ./make.sh publish
     - ./make.sh deploy
-
-
-#script:
-#- ./make.sh static-analysis
-#- ./make.sh test
-#- ./make.sh integration-test
-#- ./make.sh publish
-#- ./make.sh deploy
