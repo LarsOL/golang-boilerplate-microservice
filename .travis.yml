@@ -12,7 +12,7 @@ git:
 jobs:
   include:
   - stage: test
-  - script: ./make.sh test
+    script: ./make.sh test
   - script: ./make.sh integration-test
   - script: ./make.sh static-analysis
   - stage: deploy
